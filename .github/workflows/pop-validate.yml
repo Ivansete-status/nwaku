@@ -1,0 +1,21 @@
+name: pop-validate
+on:
+  push:
+    branches: [pop-validate]
+jobs:
+  liblogosdelivery:
+    runs-on: pop
+    timeout-minutes: 45
+    env:
+      NPROC: 2
+      MAKEFLAGS: "-j2"
+      NIMFLAGS: ""
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install nimble deps
+        uses: ./.github/actions/nimble-deps
+      - name: make liblogosdelivery
+        run: make V=1 -j1 liblogosdelivery
+      - name: Check liblogosdelivery exports no OpenSSL symbols
+        run: scripts/check_lib_exports.sh build/liblogosdelivery.dylib
