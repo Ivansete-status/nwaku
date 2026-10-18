@@ -8,7 +8,7 @@ jobs:
     timeout-minutes: 60
     env:
       NPROC: 2
-      MAKEFLAGS: "-j2"
+      MAKEFLAGS: ""
       NIMFLAGS: ""
     steps:
       - name: Checkout code
