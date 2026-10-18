@@ -9,7 +9,7 @@ jobs:
     env:
       NPROC: 2
       MAKEFLAGS: "-j2"
-      NIMFLAGS: "--passC:-std=gnu17"
+      NIMFLAGS: ""
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
